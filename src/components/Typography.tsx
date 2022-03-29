@@ -10,7 +10,7 @@ const H1 = styled.h1`
 `;
 
 const H2 = styled.h2`
-  font-size: 1.5em;
+  font-size: 1.25em;
   padding: 0;
   margin: 0;
   color: ${(props) => props.color || 'black'};
@@ -18,7 +18,7 @@ const H2 = styled.h2`
 `;
 
 const H3 = styled.h3`
-  font-size: 1em;
+  font-size: 0.8em;
   padding: 0;
   margin: 0;
   color: ${(props) => props.color || 'black'};

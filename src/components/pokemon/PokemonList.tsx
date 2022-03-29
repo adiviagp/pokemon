@@ -17,10 +17,14 @@ const PokemonContainer = styled.div`
   gap: 10px;
 `;
 
+const LoadMore = styled.button`
+  margin-bottom: 400px;
+`;
+
 const PokemonList = () => {
-  const { loading, error, data } = useQuery(GET_POKEMONS, {
+  const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
-      limit: 61,
+      limit: 10,
       offset: 0,
     },
   });
@@ -31,13 +35,21 @@ const PokemonList = () => {
     <section>
       <PokemonContainer>
         {data.pokemons.results.map((pokemon: PokemonItem, index: number) => (
-          <Link href={`/pokemon/${pokemon.name}`} key={index}>
-            <a>
-              <PokemonCard pokemon={pokemon} />
-            </a>
-          </Link>
+          <PokemonCard pokemon={pokemon} key={index} />
         ))}
       </PokemonContainer>
+      <LoadMore
+        onClick={() =>
+          fetchMore({
+            variables: {
+              limit: 5,
+              offset: data.pokemons.nextOffset,
+            },
+          })
+        }
+      >
+        LOAD MORE
+      </LoadMore>
     </section>
   );
 };

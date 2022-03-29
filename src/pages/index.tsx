@@ -38,7 +38,7 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
   await apolloClient.query({
     query: GET_POKEMONS,
     variables: {
-      limit: 61,
+      limit: 10,
       offset: 0,
     },
   });

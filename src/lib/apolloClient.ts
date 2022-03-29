@@ -16,6 +16,20 @@ export function createApolloClient() {
       typePolicies: {
         Query: {
           fields: {
+            pokemons: {
+              keyArgs: false,
+              merge(existing, incoming) {
+                if (!incoming) return existing;
+                if (!existing) return incoming; // existing will be empty the first time
+
+                const { results, ...rest } = incoming;
+
+                let res = rest;
+                res.results = [...existing.results, ...results]; // Merge existing items with the items from incoming
+
+                return res;
+              },
+            },
             cartItems: {
               read() {
                 return MyPokemonVar();
