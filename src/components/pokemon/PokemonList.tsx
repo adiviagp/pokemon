@@ -18,7 +18,31 @@ const PokemonContainer = styled.div`
 `;
 
 const LoadMore = styled.button`
-  margin-bottom: 400px;
+  background-color: #0ea5e9;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  margin-top: 2em;
+  margin-bottom: 100px;
 `;
 
 const PokemonList = () => {

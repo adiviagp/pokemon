@@ -6,7 +6,7 @@ import { MyPokemonItem, Pokemon } from './Pokemon.types';
 const SlideContainer = styled.div`
   position: fixed;
   display: flex;
-  bottom: 100px;
+  bottom: 70px;
   width: 100%;
 `;
 const Slide = styled.div`
