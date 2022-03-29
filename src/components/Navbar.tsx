@@ -36,7 +36,8 @@ const Navbar = () => {
       <BottomNav>
         <Nav>
           <Link href="/" passHref>
-            {router.asPath === '/' || router.asPath.indexOf('/pokemon') > -1 ? (
+            {/* {router.asPath === '/' || router.asPath.indexOf('/pokemon') > -1 ? ( */}
+            {router.asPath === '/' ? (
               <NavItem>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

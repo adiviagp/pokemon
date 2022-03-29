@@ -8,12 +8,13 @@ import Image from 'next/image';
 import { Pokemon } from './Pokemon.types';
 
 const HeaderDetail = styled.div`
-  background-color: #72cdb1;
-  min-height: 35vh;
+  background-color: #222;
+  min-height: 25vh;
   padding: 2em;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: -20px;
 `;
 const DetailNav = styled.div`
   margin-bottom: 1em;
@@ -21,8 +22,33 @@ const DetailNav = styled.div`
 const DetailTitle = styled.div``;
 const DetailImage = styled.div`
   position: absolute;
-  bottom: -80px;
+  bottom: -50px;
   right: 0;
+  z-index: 999;
+`;
+
+const InfoDetail = styled.div`
+  background-color: #fff;
+  margin-top: -20px;
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+  padding: 50px 20px 200px;
+`;
+
+const LabelWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+`;
+
+const LabelDetail = styled.span`
+  padding: 5px 15px;
+  font-size: 0.75em;
+  background: gray;
+  border-radius: 0.5em;
+  color: #fff;
+  margin-top: 10px;
 `;
 
 type Props = {
@@ -60,13 +86,30 @@ const PokemonDetail: React.FC<Props> = ({ pokemon }) => {
         </DetailTitle>
         <DetailImage>
           <Image
-            src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
-            width={270}
-            height={270}
+            src={pokemon.sprites.front_default}
+            width={200}
+            height={200}
             alt="poke"
           />
         </DetailImage>
       </HeaderDetail>
+      <InfoDetail>
+        <Typography variant="h2">Types</Typography>
+        <LabelWrapper>
+          {pokemon &&
+            pokemon.types.map((type, index) => (
+              <LabelDetail key={index}>{type.type.name}</LabelDetail>
+            ))}
+        </LabelWrapper>
+
+        <Typography variant="h2">Moves</Typography>
+        <LabelWrapper>
+          {pokemon &&
+            pokemon.moves.map((move, index) => (
+              <LabelDetail key={index}>{move.move.name}</LabelDetail>
+            ))}
+        </LabelWrapper>
+      </InfoDetail>
     </Container>
   );
 };
