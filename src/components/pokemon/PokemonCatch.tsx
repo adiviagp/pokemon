@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
-import appConfigVar from '../../lib/appConfigVar';
-import { Pokemon } from './Pokemon.types';
+import MyPokemonVar, { MYPOKEMON_STORAGE } from '../../lib/myPokemonVar';
+import { MyPokemonItem, Pokemon } from './Pokemon.types';
 
 const SlideContainer = styled.div`
   position: fixed;
@@ -34,17 +34,17 @@ const PokemonCatch: React.FC<Props> = ({ pokemon, handleClick }) => {
       name: pokemon?.name,
       pokemonName: pokemonName,
     };
-    console.log(data);
   };
 
   const handleSimpan = () => {
-    const data = {
-      id: 4,
-      name: 'bulbasar',
+    const data: MyPokemonItem = {
+      id: pokemon.id,
+      name: pokemon.name,
+      image: pokemon.sprites?.front_default,
+      pokemonName: pokemonName,
     };
-    appConfigVar([...appConfigVar(), JSON.stringify(data)]);
-    console.table(appConfigVar());
-    localStorage.setItem('mantap', JSON.stringify(appConfigVar()));
+    MyPokemonVar([...MyPokemonVar(), data]);
+    localStorage.setItem(MYPOKEMON_STORAGE, JSON.stringify(MyPokemonVar()));
   };
 
   //   useEffect(() => {

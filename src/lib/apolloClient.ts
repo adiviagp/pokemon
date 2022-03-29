@@ -1,5 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache, makeVar } from '@apollo/client';
-import appConfigVar from './appConfigVar';
+import MyPokemonVar from './myPokemonVar';
 
 export function createApolloClient() {
   return new ApolloClient({
@@ -18,7 +18,7 @@ export function createApolloClient() {
           fields: {
             cartItems: {
               read() {
-                return appConfigVar();
+                return MyPokemonVar();
               },
             },
           },
