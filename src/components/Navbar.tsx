@@ -61,7 +61,7 @@ const Navbar = () => {
                   fill="#145638"
                 />
               </svg>
-              <span className="tab tab-home block text-xs">Home</span>
+              <span className="tab tab-home block text-xs">Beranda</span>
             </NavItem>
           </Link>
           <Link href="/mypokemon" passHref>

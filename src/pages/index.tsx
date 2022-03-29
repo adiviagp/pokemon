@@ -1,6 +1,12 @@
 import styled from '@emotion/styled';
+import { GetStaticPropsContext } from 'next';
+import React from 'react';
 import Container from '../components/Container';
+import PokemonList from '../components/pokemon/PokemonList';
+import PokemonContainer from '../components/pokemon/PokemonList';
 import Typography from '../components/Typography';
+import { initializeApollo, addApolloState } from '../lib/apollo';
+import GET_POKEMONS from '../lib/queries/getPokemons';
 
 const Button = styled.button`
   padding: 32px;
@@ -49,9 +55,26 @@ const Pokemon = () => {
             </svg>
           </PokeCircle>
         </Header>
+        <PokemonList></PokemonList>
       </Container>
     </div>
   );
 };
+
+export async function getServerSideProps(context: GetStaticPropsContext) {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: GET_POKEMONS,
+    variables: {
+      limit: 61,
+      offset: 0,
+    },
+  });
+
+  return addApolloState(apolloClient, {
+    props: {},
+  });
+}
 
 export default Pokemon;
