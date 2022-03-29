@@ -1,0 +1,1 @@
+{"c":["pages/_app","webpack"],"r":["pages/mypokemon"],"m":["../node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fmypokemon&absolutePagePath=%2FUsers%2Fadiviagp%2Fpokemon%2Fsrc%2Fpages%2Fmypokemon.tsx!","./components/pokemon/MyPokemonCard.tsx","./lib/queries/getCart.ts","./pages/mypokemon.tsx"]}

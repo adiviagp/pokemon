@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Fragment, useEffect } from 'react';
 import Container from '../components/Container';
+import Header from '../components/Header';
 import MyPokemonCard from '../components/pokemon/MyPokemonCard';
 import MyPokemonVar, { MYPOKEMON_STORAGE } from '../lib/myPokemonVar';
 import GET_CARTS_ITEMS from '../lib/queries/getCart';
@@ -18,7 +19,7 @@ function MyPokemon() {
 
   return (
     <Container>
-      <>My Cart</>
+      <Header title="My Pokemon" />
 
       {(data && data.cartItems.length === 0) || data.cartItems === null ? (
         <p>No items in your cart</p>
