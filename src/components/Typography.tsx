@@ -26,7 +26,7 @@ const H3 = styled.h3`
 `;
 
 const P = styled.p`
-  font-size: 2em;
+  font-size: 0.75em;
   color: ${(props) => props.color || 'black'};
   z-index: 999;
 `;
