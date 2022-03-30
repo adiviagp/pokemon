@@ -1,0 +1,10 @@
+{
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/_app": "pages/_app.js",
+  "/api/hello": "pages/api/hello.js",
+  "/mypokemon": "pages/mypokemon.html",
+  "/pokemon/[name]": "pages/pokemon/[name].js",
+  "/": "pages/index.js",
+  "/404": "pages/404.html"
+}
