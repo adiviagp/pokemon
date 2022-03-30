@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import Load from '../../public/loaderbg.png';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { css } from '@emotion/react';
 type LoaderType = {
   image: StaticImageData;

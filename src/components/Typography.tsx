@@ -6,25 +6,30 @@ const H1 = styled.h1`
   padding: 0;
   margin: 0;
   color: ${(props) => props.color || 'black'};
+  z-index: 999;
 `;
 
 const H2 = styled.h2`
-  font-size: 1.5em;
+  font-size: 1.25em;
   padding: 0;
   margin: 0;
   color: ${(props) => props.color || 'black'};
+  z-index: 999;
 `;
 
 const H3 = styled.h3`
-  font-size: 1em;
+  font-size: 0.8em;
   padding: 0;
   margin: 0;
   color: ${(props) => props.color || 'black'};
+  z-index: 999;
 `;
 
 const P = styled.p`
-  font-size: 2em;
+  font-size: 0.75em;
   color: ${(props) => props.color || 'black'};
+  z-index: 999;
+  position: relative;
 `;
 
 type Header = 'h1' | 'h2' | 'h3' | 'h4' | 'p';

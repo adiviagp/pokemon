@@ -4,19 +4,30 @@ import Typography from '../Typography';
 import Image from 'next/image';
 import { PokemonItem } from './Pokemon.types';
 import PokeBlank from '../../../public/loaderbg.png';
+import Link from 'next/link';
+import { useQuery } from '@apollo/client';
+import GET_CARTS_ITEMS from '../../lib/queries/getCart';
 
 const Card = styled.div`
-  flex: 1 50%;
-  background: #87bcf9;
+  width: 47%;
+  background: #fafafa;
   border-radius: 0.75em;
   padding: 1em;
-  height: 200px;
+  height: 150px;
   position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 `;
 const PokeImage = styled.div`
   position: absolute;
-  right: 10px;
+  right: 0;
   bottom: 0;
+`;
+const TotalOwned = styled.span`
+  padding: 5px 8px;
+  font-size: 0.5em;
+  background: gray;
+  border-radius: 1em;
+  color: #fff;
 `;
 
 type Props = {
@@ -24,22 +35,30 @@ type Props = {
 };
 
 const PokemonCard: React.FC<Props> = ({ pokemon }) => {
+  const { data, loading, error } = useQuery(GET_CARTS_ITEMS);
+  const countOwnedPokemon = data.cartItems.reduce(
+    (total, x) => (x.id === pokemon.id ? total + 1 : total),
+    0
+  );
+
   return (
     <Card>
-      <Typography variant="h2" color="#ffffff">
-        {pokemon?.name}
-      </Typography>
-      <Typography variant="h3" color="#ffffff">
-        {pokemon?.id}
-      </Typography>
-      <PokeImage>
-        <Image
-          src={pokemon.image ? pokemon.image : PokeBlank}
-          width={140}
-          height={140}
-          alt="poke"
-        />
-      </PokeImage>
+      <Link href={`/pokemon/${pokemon.name}`}>
+        <a>
+          <div>
+            <Typography variant="h2">{pokemon?.name}</Typography>
+            <TotalOwned>Owned: {countOwnedPokemon}</TotalOwned>
+            <PokeImage>
+              <Image
+                src={pokemon.image ? pokemon.image : PokeBlank}
+                width={100}
+                height={100}
+                alt="poke"
+              />
+            </PokeImage>
+          </div>
+        </a>
+      </Link>
     </Card>
   );
 };

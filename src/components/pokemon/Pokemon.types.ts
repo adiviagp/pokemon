@@ -7,6 +7,13 @@ export interface PokemonItem {
   dreamworld: string;
 }
 
+export interface MyPokemonItem {
+  id: number;
+  name: string;
+  image: string;
+  pokemonName: string;
+}
+
 export interface PokemonList {
   count: number;
   next: string;
