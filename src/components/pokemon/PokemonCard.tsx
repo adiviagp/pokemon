@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { PokemonItem } from './Pokemon.types';
 import PokeBlank from '../../../public/loaderbg.png';
 import Link from 'next/link';
+import { useQuery } from '@apollo/client';
+import GET_CARTS_ITEMS from '../../lib/queries/getCart';
 
 const Card = styled.div`
   width: 47%;
@@ -33,13 +35,19 @@ type Props = {
 };
 
 const PokemonCard: React.FC<Props> = ({ pokemon }) => {
+  const { data, loading, error } = useQuery(GET_CARTS_ITEMS);
+  const countOwnedPokemon = data.cartItems.reduce(
+    (total, x) => (x.id === pokemon.id ? total + 1 : total),
+    0
+  );
+
   return (
     <Card>
       <Link href={`/pokemon/${pokemon.name}`}>
         <a>
           <div>
             <Typography variant="h2">{pokemon?.name}</Typography>
-            <TotalOwned>Owned: {pokemon?.id}</TotalOwned>
+            <TotalOwned>Owned: {countOwnedPokemon}</TotalOwned>
             <PokeImage>
               <Image
                 src={pokemon.image ? pokemon.image : PokeBlank}

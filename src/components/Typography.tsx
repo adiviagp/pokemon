@@ -29,6 +29,7 @@ const P = styled.p`
   font-size: 0.75em;
   color: ${(props) => props.color || 'black'};
   z-index: 999;
+  position: relative;
 `;
 
 type Header = 'h1' | 'h2' | 'h3' | 'h4' | 'p';

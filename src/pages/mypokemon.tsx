@@ -24,7 +24,7 @@ function MyPokemon() {
       <Header title="My Pokemon" />
 
       {(data && data.cartItems.length === 0) || data.cartItems === null ? (
-        <p>You dont have pokemon yet</p>
+        <Typography variant="p">You dont have pokemon yet</Typography>
       ) : (
         <Fragment>
           {data &&
